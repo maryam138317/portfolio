@@ -1,6 +1,7 @@
 'use client'
 import { Personal_data } from "@/utils/data";
 import { motion, Variants } from "framer-motion";
+import Link from "next/link";
 
 const container: Variants = {
   hidden: {},
@@ -88,7 +89,9 @@ export default function Hero() {
           style={{backgroundColor: 'black', color: 'white'}}
           className="font-mono px-6 py-3 font-medium rounded-[999px]"
         >
-          Contact Me
+         <Link href='#contact'>
+           Contact Me
+         </Link>
         </motion.button>
       </motion.div>
     </div>

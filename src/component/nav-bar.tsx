@@ -2,7 +2,7 @@
 import { nav_bar } from "@/utils/data";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function NavBar() {
   const [active, setActive] = useState(nav_bar[0]?.href);
@@ -35,12 +35,11 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="w-full flex justify-between px-8 py-4 sticky top-0 bg-ink/80 backdrop-blur z-50">
+    <div className="w-full flex justify-between px-8 py-4 sticky top-0 bg-ink/80 backdrop-blur z-50 shadow-olive-200 shadow-xl">
       <div></div>
       <nav className="flex items-center w-fit gap-6">
         {nav_bar.map((nav) => (
-          <AnimatePresence mode="wait" key={nav.href}>
-            <Link href={`#${nav.href}`} className="relative py-1">
+          <Link href={`#${nav.href}`} key={nav.href} className="relative py-1">
             <span className={active === nav.href ? "font-bold underline" : ""}>
               {nav.title}
             </span>
@@ -52,7 +51,6 @@ export default function NavBar() {
               />
             )}
           </Link>
-          </AnimatePresence>
         ))}
       </nav>
       <button className="py-2 px-4 rounded-[999px] cursor-pointer font-medium bg-black text-white">
