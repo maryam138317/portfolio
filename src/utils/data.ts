@@ -50,8 +50,8 @@ export const experiances : Experiance[] = [
     {
         title: 'Software Engeering Intern',
         company: 'NegarKhodro',
-        responsibility : "Created UML diagrams for software documentation.Participated in software analysis and documentation activities.",
-        startDate: '2026-3',
+        responsibility : "Created UML diagrams for software documentation\.Participated in software analysis and documentation activities.",
+        startDate: '2026/3',
         endDate : 'Present'
     }
 ]
