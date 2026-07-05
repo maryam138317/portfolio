@@ -1,4 +1,4 @@
-import type { Experiance, FormInfo, Personal, Projects, Skill } from "./data-interface";
+import type { Experiance, FormInfo, Nav_items, Personal, Projects, Skill } from "./data-interface";
 
 import {
   SiHtml5,
@@ -25,8 +25,7 @@ export const Personal_data : Personal = {
     social : {
         github: 'https://github.com/maryam138317',
         linkedin: 'https://search.eitaa.com/?url=https://www.linkedin.com/in/maryam-jafartabar-24b249381?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app'
-    },
-    cvFile: ''
+    }
 }
 
 export const skills: Skill[] = [
@@ -92,3 +91,10 @@ export const projects : Projects[] = [
 ]
 
 export const people : FormInfo[] = []
+
+export const nav_bar: Nav_items[] = [
+        {title: 'About', href: 'about'},
+        {title: 'Skills & Experiences', href: 'skills-experience'},
+        {title: 'Projects', href: 'projects'},
+        {title: 'Contact', href: 'contact'},
+    ]

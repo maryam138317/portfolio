@@ -5,7 +5,6 @@ export interface Personal {
     jobTitle: string,
     description : string,
     social : Social,
-    cvFile : string
 }
 interface Social {
     github: string,
@@ -42,4 +41,9 @@ export interface FormInfo {
     name : string,
     email : string,
     message : string
+}
+
+export interface Nav_items {
+    title : string,
+    href : string
 }
