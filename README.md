@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Maryam Jafartabar
+
+A personal portfolio site built to showcase my work as a Front-end Developer, featuring a code/syntax-highlighting inspired design and smooth scroll-based animations.
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Animation:** Framer Motion
+- **Forms:** React Hook Form + Yup
+- **Icons:** react-icons
+- **Form submission:** Formspree
+
+## Features
+
+- Animated hero section with staggered entrance animations
+- Scroll-spy navigation bar — highlights the active section and updates the URL as you scroll
+- Responsive mobile menu with overlay navigation
+- Sections: About, Skills & Experience, Projects, Contact
+- Contact form with client-side validation, submission states, and email delivery via Formspree
+- Downloadable CV
+- Scroll-triggered reveal animations for each section
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it locally.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/                  # App Router pages & layout
+├── component/            # Shared components (Hero, NavBar, Footer, sections wrapper)
+│   └── section-items/    # Small reusable pieces (SkillItem, ProjectItem)
+├── sections/             # Page sections (About, Skills, Projects, Contact)
+├── schema/                # Yup validation schemas
+└── utils/                # Static data & TypeScript interfaces
+```
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Deployed on [Vercel](https://vercel.com).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contact
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [GitHub](https://github.com/maryam138317)
+- [LinkedIn](https://www.linkedin.com/in/maryam-jafartabar-24b249381)

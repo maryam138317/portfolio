@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <NavBar />
+      <NavBar styles="max-sm:hidden w-full flex justify-between px-8 py-4 sticky top-0 bg-ink/80 backdrop-blur z-50 shadow-olive-200 shadow-xl"/>
       
       <About />
       <Skill />

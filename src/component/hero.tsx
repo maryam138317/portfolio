@@ -1,7 +1,11 @@
 'use client'
 import { Personal_data } from "@/utils/data";
-import { motion, Variants } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { IoClose } from "react-icons/io5";
+import NavBar from "./nav-bar";
+import { useEffect, useState } from "react";
 
 const container: Variants = {
   hidden: {},
@@ -42,58 +46,117 @@ const buttonPop: Variants = {
 };
 
 export default function Hero() {
+
   const { name, jobTitle, description } = Personal_data;
+  const [modalOpen, setModal] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false)
+
+  const handleModal = () => {
+    setModal(!modalOpen);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // adjust this threshold to wherever your background actually changes
+      // e.g. roughly the height of the hero section
+      setScrolled(window.scrollY > window.innerHeight - 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // run once on mount in case page loads already scrolled
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
-    <div className="h-screen w-full flex items-center" style={{background: 'linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)'}}>
-      <motion.div
-        className="px-8 md:px-16 max-w-3xl"
-        variants={container}
-        initial="hidden"
-        animate="show"
+    <>
+      <div
+        className="h-screen w-full flex justify-between"
+        style={{
+          background:
+            "linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)",
+        }}
       >
-        <motion.p
-          variants={fromLeft}
-          className="font-mono text-sm mb-3 tracking-wide"
-        >
-          {"// hello, world"}
-        </motion.p>
+        <div className="flex items-center">
+          <motion.div
+            className="px-8 md:px-16 max-w-3xl"
+            variants={container}
+            initial="hidden"
+            animate="show"
+          >
+            <motion.p
+              variants={fromLeft}
+              className="font-mono text-sm mb-3 tracking-wide"
+            >
+              {"// hello, world"}
+            </motion.p>
 
-        <motion.h1
-          variants={fromLeft}
-          className="font-display text-5xl md:text-7xl font-bold mb-2"
-        >
-          {name}
-        </motion.h1>
+            <motion.h1
+              variants={fromLeft}
+              className="font-display text-5xl md:text-7xl font-bold mb-2"
+            >
+              {name}
+            </motion.h1>
 
-        <motion.p
-          variants={fromLeft}
-          className="font-mono text-xl md:text-2xl mb-6"
-        >
-          <span>{"<"}</span>
-          <span>{jobTitle.replace(/\s+/g, "")}</span>
-          <span>{" />"}</span>
-        </motion.p>
+            <motion.p
+              variants={fromLeft}
+              className="font-mono text-xl md:text-2xl mb-6"
+            >
+              <span>{"<"}</span>
+              <span>{jobTitle.replace(/\s+/g, "")}</span>
+              <span>{" />"}</span>
+            </motion.p>
 
-        <motion.p
-          variants={fromBottom}
-          className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-8 text-balance"
-        >
-          {description}
-        </motion.p>
+            <motion.p
+              variants={fromBottom}
+              className="font-body text-base md:text-lg leading-relaxed max-w-xl mb-8 text-balance"
+            >
+              {description}
+            </motion.p>
 
-        <motion.button
-          variants={buttonPop}
-          whileHover={{ scale: 1.05}}
-          whileTap={{ scale: 0.97 }}
-          style={{backgroundColor: 'black', color: 'white'}}
-          className="font-mono px-6 py-3 font-medium rounded-[999px]"
+            <motion.button
+              variants={buttonPop}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+              style={{ backgroundColor: "black", color: "white" }}
+              className="font-mono px-6 py-3 font-medium rounded-[999px]"
+            >
+              <Link href="#contact">Contact Me</Link>
+            </motion.button>
+          </motion.div>
+        </div>
+
+        <div
+          className="max-sm:flex hidden h-fit cursor-pointer mt-6 mr-8 z-40 fixed right-0"
+          onClick={handleModal}
         >
-         <Link href='#contact'>
-           Contact Me
-         </Link>
-        </motion.button>
-      </motion.div>
-    </div>
+          <GiHamburgerMenu size={26} className={scrolled ? 'fill-black' : 'fill-white'} />
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+  {modalOpen && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      className="fixed inset-0 bg-black/95 text-white z-50 flex flex-col items-center justify-center gap-12"
+    >
+      <button
+        onClick={handleModal}
+        className="absolute top-6 right-6 cursor-pointer"
+        aria-label="Close menu"
+      >
+        <IoClose size={30} fill="white" />
+      </button>
+      <NavBar isVertical onLinkClick={handleModal} styles="flex flex-col items-center gap-8" />
+    </motion.div>
+  )}
+</AnimatePresence>
+    </>
   );
 }
