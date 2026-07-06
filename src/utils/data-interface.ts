@@ -8,7 +8,8 @@ export interface Personal {
 }
 interface Social {
     github: string,
-    linkedin: string
+    linkedin: string,
+    email: string
 }
 
 

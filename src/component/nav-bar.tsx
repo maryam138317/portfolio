@@ -35,7 +35,7 @@ export default function NavBar() {
   }, []);
 
   return (
-    <div className="w-full flex justify-between px-8 py-4 sticky top-0 bg-ink/80 backdrop-blur z-50 shadow-olive-200 shadow-xl">
+    <div className="max-sm:hidden w-full flex justify-between px-8 py-4 sticky top-0 bg-ink/80 backdrop-blur z-50 shadow-olive-200 shadow-xl">
       <div></div>
       <nav className="flex items-center w-fit gap-6">
         {nav_bar.map((nav) => (

@@ -24,7 +24,8 @@ export const Personal_data : Personal = {
     description : 'Junior Frontend Developer with hands-on experience in React and Next.js development. Passionate about building modern web applications and continuously improving software engineering skills through personal projects and internship experience.',
     social : {
         github: 'https://github.com/maryam138317',
-        linkedin: 'https://search.eitaa.com/?url=https://www.linkedin.com/in/maryam-jafartabar-24b249381?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app'
+        linkedin: 'https://search.eitaa.com/?url=https://www.linkedin.com/in/maryam-jafartabar-24b249381?utm_source=share&amp;utm_campaign=share_via&amp;utm_content=profile&amp;utm_medium=android_app',
+        email: 'jafartabarmaryam381@gmail.com'
     }
 }
 
