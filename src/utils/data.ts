@@ -66,7 +66,7 @@ export const projects : Projects[] = [
         github : 'https://github.com/maryam138317/task-manager',
         demo : ''
     },
-    image : ''
+    image : '/images/task-manager.png'
     },
     {
         title: 'Online Shop',
@@ -76,7 +76,7 @@ export const projects : Projects[] = [
         github : 'https://github.com/maryam138317/online-shop',
         demo : ''
     },
-    image : ''
+    image : '/images/online-shop.png'
     },
     {
         title: 'Drug-Target Interaction Prediction',
@@ -86,7 +86,7 @@ export const projects : Projects[] = [
         github : 'https://github.com/maryam138317/DTI-Prediction',
         demo : ''
     },
-    image : ''
+    image : '/images/dti.png'
     },
 ]
 
