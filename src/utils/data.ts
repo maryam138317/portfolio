@@ -14,9 +14,10 @@ import {
   SiRedux,
   SiReacthookform,
   SiFramer,
-  SiPython,
+  SiPython
 } from "react-icons/si";
 import { MdApi } from "react-icons/md";
+import { GiBearFace } from "react-icons/gi";
 
 export const Personal_data : Personal = {
     name : 'Maryam Jafartabar',
@@ -42,6 +43,7 @@ export const skills: Skill[] = [
   { title: "Tailwind CSS", icon: SiTailwindcss },
   { title: "React Query", icon: SiReactquery },
   { title: "Redux Toolkit", icon: SiRedux },
+  {title: "Zustand", icon: GiBearFace},
   { title: "React Hook Form & yup", icon: SiReacthookform },
   { title: "Framer Motion", icon: SiFramer },
   { title: "Python", icon: SiPython },
@@ -75,9 +77,19 @@ export const projects : Projects[] = [
         techs : ['React','React Query','Redux Toolkit','Material UI'],
     links : {
         github : 'https://github.com/maryam138317/online-shop',
-        demo : ''
+        demo : 'https://online-shopp-taupe.vercel.app/'
     },
     image : '/images/online-shop.png'
+    },
+    {
+        title: 'Project Manager',
+        description: "A simple project management application built with React, TypeScript, Redux Toolkit, and Tailwind CSS.\nThe main goal of this project was to practice writing scalable React applications with TypeScript while working with state management and reusable components.",
+        techs: ['React','TypeScript','Tailwind CSS','Redux Toolkit'],
+        links : {
+            github: 'https://github.com/maryam138317/project-manager',
+            demo: 'https://project-managerr-omega.vercel.app/'
+        },
+        image: '/images/project-manager.png'
     },
     {
         title: 'Drug-Target Interaction Prediction',
@@ -89,6 +101,7 @@ export const projects : Projects[] = [
     },
     image : '/images/dti.png'
     },
+
 ]
 
 export const people : FormInfo[] = []
