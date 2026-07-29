@@ -30,9 +30,7 @@ export default function NavBar({
         });
       },
       {
-        // shrinks the "viewport" IO checks against to a thin band
-        // through the middle of the screen — a section only counts
-        // as active once it crosses that middle band
+       
         rootMargin: "-45% 0px -45% 0px",
         threshold: 0,
       }
@@ -87,7 +85,7 @@ export default function NavBar({
         <Link
           href="/MyResume.pdf"
           download="maryam-jafartabar-cv.pdf"
-          className="py-2 px-4 rounded-[999px] cursor-pointer font-medium bg-black text-white text-sm max-sm:hidden"
+          className="py-2 px-4 rounded-[999px] cursor-pointer font-medium bg-black text-white text-sm max-sm:hidden dark:bg-white dark:text-black"
         >
           Download CV
         </Link>

@@ -85,7 +85,7 @@ export default function Contact() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="bg-black text-white rounded-md px-5 py-2.5 font-medium disabled:opacity-50 self-start"
+          className="bg-black text-white dark:bg-white dark:text-black rounded-md px-5 py-2.5 font-medium disabled:opacity-50 self-start"
         >
           {isSubmitting ? "Sending..." : isSubmitSuccessful ? "Sent ✓" : "Contact Me!"}
         </button>

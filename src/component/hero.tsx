@@ -58,13 +58,12 @@ export default function Hero() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // adjust this threshold to wherever your background actually changes
-      // e.g. roughly the height of the hero section
+      
       setScrolled(window.scrollY > window.innerHeight - 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // run once on mount in case page loads already scrolled
+    handleScroll(); 
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -81,7 +80,7 @@ export default function Hero() {
       >
         <div className="flex items-center">
           <motion.div
-            className="px-8 md:px-16 max-w-3xl"
+            className="px-8 md:px-16 max-w-3xl dark:text-black"
             variants={container}
             initial="hidden"
             animate="show"
@@ -132,7 +131,7 @@ export default function Hero() {
           className="max-sm:flex hidden h-fit cursor-pointer mt-6 mr-8 z-40 fixed right-0"
           onClick={handleModal}
         >
-          <GiHamburgerMenu size={26} className={scrolled ? 'fill-black' : 'fill-white'} />
+          <GiHamburgerMenu size={26} className={scrolled ? 'fill-black dark:fill-white' : 'fill-white'} />
         </div>
       </div>
 

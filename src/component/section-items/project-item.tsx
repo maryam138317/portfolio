@@ -5,7 +5,7 @@ import { IoIosLink } from "react-icons/io";
 
 function TechItem({ item }: { item: string }) {
   return (
-    <p className="font-mono text-xs text-gray-700 border border-gray-300 rounded-full px-3 py-1">
+    <p className="font-mono text-xs text-gray-700 border border-gray-300 rounded-full px-3 py-1  dark:text-white">
       {item}
     </p>
   );
@@ -15,16 +15,16 @@ export default function ProjectItem({ project }: { project: Projects }) {
   const { image, title, description, techs, links } = project;
 
   return (
-    <li className="rounded-2xl border border-gray-200 bg-white p-6 flex flex-col gap-4 shadow-sm hover:shadow-md hover:border-gray-400 transition-all">
+    <li className="rounded-2xl border border-gray-200 bg-white dark:bg-black p-6 flex flex-col gap-4 shadow-sm hover:shadow-md hover:border-gray-400 transition-all">
       {image && (
         <div className="rounded-xl overflow-hidden relative w-full aspect-video">
           <Image src={image} alt={title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
         </div>
       )}
 
-      <h6 className="font-display text-xl font-bold text-gray-900">{title}</h6>
+      <h6 className="font-display text-xl font-bold text-gray-900  dark:text-olive-100">{title}</h6>
 
-      <p className="font-body text-gray-600 text-sm leading-relaxed whitespace-pre-line">
+      <p className="font-body text-gray-600 dark:text-olive-400 text-sm leading-relaxed whitespace-pre-line">
         {description}
       </p>
 
@@ -39,7 +39,7 @@ export default function ProjectItem({ project }: { project: Projects }) {
           <Link
             href={links.github}
             target="_blank"
-            className="flex items-center gap-1 font-mono text-sm text-gray-800 hover:text-black transition-colors"
+            className="flex items-center gap-1 font-mono text-sm text-gray-800 hover:text-black transition-colors dark:text-olive-300 dark:hover:text-olive-50"
           >
             <IoIosLink />
             <span>Github</span>
@@ -50,7 +50,7 @@ export default function ProjectItem({ project }: { project: Projects }) {
             <Link
               href={links.demo}
               target="_blank"
-              className="flex items-center gap-1 font-mono text-sm text-gray-800 hover:text-black transition-colors"
+              className="flex items-center gap-1 font-mono text-sm text-gray-800 hover:text-black transition-colors dark:text-olive-300 dark:hover:text-olive-50"
             >
               <IoIosLink />
               <span>Demo</span>
