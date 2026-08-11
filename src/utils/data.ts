@@ -89,7 +89,7 @@ export const projects : Projects[] = [
             github: 'https://github.com/maryam138317/dish-directory',
             demo: 'https://dish-directory-wheat.vercel.app/'
         },
-        image :'/images/dish-directory'
+        image :'/images/dish-directory.png'
     },
     {
         title: 'Project Manager',
