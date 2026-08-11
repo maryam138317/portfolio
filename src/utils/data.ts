@@ -82,6 +82,16 @@ export const projects : Projects[] = [
     image : '/images/online-shop.png'
     },
     {
+        title: 'Dish Directory',
+        description: 'A recipe browsing web app built with Next.js, TypeScript, and Material UI.\n Browse recipes, view detailed ingredients and instructions, search and filter, manage a personal profile, save favorites, and add your own recipes — Using DummyJSON API as a mock Backend.',
+        techs: ['Next.js', 'TypeScript', 'Material UI'],
+        links: {
+            github: 'https://github.com/maryam138317/dish-directory',
+            demo: 'https://dish-directory-wheat.vercel.app/'
+        },
+        image :'/images/dish-directory'
+    },
+    {
         title: 'Project Manager',
         description: "A simple project management application built with React, TypeScript, Redux Toolkit, and Tailwind CSS.\nThe main goal of this project was to practice writing scalable React applications with TypeScript while working with state management and reusable components.",
         techs: ['React','TypeScript','Tailwind CSS','Redux Toolkit'],
