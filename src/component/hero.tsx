@@ -1,11 +1,13 @@
 'use client'
 import { Personal_data } from "@/utils/data";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoClose } from "react-icons/io5";
 import NavBar from "./nav-bar";
 import { useEffect, useState } from "react";
+import { pickLocalized } from "@/lib/localized";
 
 const container: Variants = {
   hidden: {},
@@ -46,11 +48,15 @@ const buttonPop: Variants = {
 };
 
 export default function Hero() {
+  const locale = useLocale();
+  const t = useTranslations('buttons');
 
-  const { name, jobTitle, description } = Personal_data;
+  const name = pickLocalized(Personal_data.name, locale);
+  const jobTitle = pickLocalized(Personal_data.jobTitle, locale);
+  const description = pickLocalized(Personal_data.description, locale);
+
   const [modalOpen, setModal] = useState(false);
-
-  const [scrolled, setScrolled] = useState(false)
+  const [scrolled, setScrolled] = useState(false);
 
   const handleModal = () => {
     setModal(!modalOpen);
@@ -58,16 +64,14 @@ export default function Hero() {
 
   useEffect(() => {
     const handleScroll = () => {
-      
       setScrolled(window.scrollY > window.innerHeight - 100);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); 
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
 
   return (
     <>
@@ -122,7 +126,7 @@ export default function Hero() {
               style={{ backgroundColor: "black", color: "white" }}
               className="font-mono px-6 py-3 font-medium rounded-[999px]"
             >
-              <Link href="#contact">Contact Me</Link>
+              <Link href="#contact">{t('contact')}</Link>
             </motion.button>
           </motion.div>
         </div>
@@ -137,25 +141,25 @@ export default function Hero() {
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-  {modalOpen && (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.25 }}
-      className="fixed inset-0 bg-black/95 text-white z-50 flex flex-col items-center justify-center gap-12"
-    >
-      <button
-        onClick={handleModal}
-        className="absolute top-6 right-6 cursor-pointer"
-        aria-label="Close menu"
-      >
-        <IoClose size={30} fill="white" />
-      </button>
-      <NavBar isVertical onLinkClick={handleModal} styles="flex flex-col items-center gap-8" />
-    </motion.div>
-  )}
-</AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/95 text-white z-50 flex flex-col items-center justify-center gap-12"
+          >
+            <button
+              onClick={handleModal}
+              className="absolute top-6 right-6 cursor-pointer"
+              aria-label="Close menu"
+            >
+              <IoClose size={30} fill="white" />
+            </button>
+            <NavBar isVertical onLinkClick={handleModal} styles="flex flex-col items-center gap-8" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

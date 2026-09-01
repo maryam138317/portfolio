@@ -15,6 +15,7 @@ const fromTop: Variants = {
 };
 
 export default function ProSections({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+
   return (
     <motion.section
       className="w-full min-h-screen flex flex-col justify-center px-8 md:px-16 py-24 max-w-5xl mx-auto"

@@ -1,8 +1,10 @@
-'use client'
+'use client';
 import { nav_bar } from "@/utils/data";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { pickLocalized } from "@/lib/localized";
 
 export default function NavBar({
   styles,
@@ -13,11 +15,14 @@ export default function NavBar({
   isVertical?: boolean;
   onLinkClick?: () => void;
 }) {
-  const [active, setActive] = useState(nav_bar[0]?.href);
+  const locale = useLocale();
+  const [active, setActive] = useState(nav_bar[0]?.href.replace('#', ''));
+
+  const t = useTranslations('nav')
 
   useEffect(() => {
     const sections = nav_bar
-      .map((nav) => document.getElementById(nav.href))
+      .map((nav) => document.getElementById(nav.href.replace('#', '')))
       .filter((el): el is HTMLElement => el !== null);
 
     const observer = new IntersectionObserver(
@@ -30,7 +35,6 @@ export default function NavBar({
         });
       },
       {
-       
         rootMargin: "-45% 0px -45% 0px",
         threshold: 0,
       }
@@ -56,29 +60,32 @@ export default function NavBar({
             : "flex items-center w-fit gap-6"
         }
       >
-        {nav_bar.map((nav) => (
-          <Link
-            href={`#${nav.href}`}
-            key={nav.href}
-            onClick={onLinkClick}
-            className="relative py-1"
-          >
-            <span
-              className={`${isVertical ? "text-2xl" : "text-sm"} ${
-                active === nav.href ? "font-bold" : ""
-              }`}
+        {nav_bar.map((nav) => {
+          const id = nav.href.replace('#', '');
+          return (
+            <Link
+              href={nav.href}
+              key={nav.href}
+              onClick={onLinkClick}
+              className="relative py-1"
             >
-              {nav.title}
-            </span>
-            {active === nav.href && (
-              <motion.div
-                layoutId="nav-underline"
-                className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-white"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
-          </Link>
-        ))}
+              <span
+                className={`${isVertical ? "text-2xl" : "text-sm"} ${
+                  active === id ? "font-bold" : ""
+                }`}
+              >
+                {pickLocalized(nav.label, locale)}
+              </span>
+              {active === id && (
+                <motion.div
+                  layoutId="nav-underline"
+                  className="absolute left-0 right-0 -bottom-0.5 h-0.5 bg-white"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </Link>
+          );
+        })}
       </nav>
 
       {!isVertical && (
@@ -87,7 +94,7 @@ export default function NavBar({
           download="maryam-jafartabar-cv.pdf"
           className="py-2 px-4 rounded-[999px] cursor-pointer font-medium bg-black text-white text-sm max-sm:hidden dark:bg-white dark:text-black"
         >
-          Download CV
+          {t('downloadCV')}
         </Link>
       )}
 
@@ -97,7 +104,7 @@ export default function NavBar({
           download="maryam-jafartabar-cv.pdf"
           className="py-2.5 px-6 rounded-[999px] cursor-pointer font-medium bg-white text-black text-sm mt-4"
         >
-          Download CV
+          t{'downloadCV'}
         </Link>
       )}
     </div>

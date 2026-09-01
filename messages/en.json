@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "downloadCV": "Download CV"
+  },
+  "sections": {
+    "about": "About Me",
+    "skillsExperience": "Skills & Experiences",
+    "projects": "Projects",
+    "contact": "Contact",
+    "skills": "Skills",
+    "experience": "Experiences",
+    "present": "Present"
+  },
+  "buttons": {
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "demo": "Live Demo",
+    "contact": "Contact Me",
+    "email":"Email"
+  },
+"form": {
+  "title": "Contact",
+  "name": "Name",
+  "email": "Email",
+  "message": "Message",
+  "sendButton": "Contact Me!",
+  "sending": "Sending...",
+  "sent": "Sent ✓",
+  "submitError": "Something went wrong — please try again or email me directly."
+},
+"footer": {
+    "contactMe": "Contact Me"
+  }
+}
