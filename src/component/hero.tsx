@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import NavBar from "./nav-bar";
 import { useEffect, useState } from "react";
 import { pickLocalized } from "@/lib/localized";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const container: Variants = {
   hidden: {},
@@ -131,12 +132,19 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div
-          className="max-sm:flex hidden h-fit cursor-pointer mt-6 mr-8 z-40 fixed right-0"
+        <div className="flex items-center gap-3 h-fit mt-6 mr-6 z-40 fixed top-0 right-0">
+          <LocaleSwitcher scrolled={scrolled} />
+          <button
           onClick={handleModal}
+          aria-label="Open menu"
+          className="max-sm:flex hidden items-center justify-center h-9 w-9 rounded-full transition-colors"
         >
-          <GiHamburgerMenu size={26} className={scrolled ? 'fill-black dark:fill-white' : 'fill-white'} />
-        </div>
+          <GiHamburgerMenu
+            size={22}
+            className={scrolled ? 'fill-black dark:fill-white' : 'fill-white'}
+          />
+        </button>
+      </div>
       </div>
 
       {/* Mobile Menu Overlay */}
