@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { bNazanin } from "@/fonts";
 import type { ReactNode } from 'react';
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
@@ -37,7 +38,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir}>
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col antialiased`}>
+      <body className={ locale == 'fa' ? 
+        `${bNazanin.variable} min-h-full flex flex-col antialiased`
+        : `${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col antialiased`
+      }>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
