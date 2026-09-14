@@ -74,7 +74,18 @@ export default function Hero() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const bgStyle = locale == 'en' ? "linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)" : "linear-gradient(219deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)"
+  const bgStyle =
+    locale === 'en'
+      ? "linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)"
+      : "linear-gradient(219deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)";
+
+  // scrolled -> hero gradient is gone, we're over the real site background -> dark-mode aware
+  // !scrolled -> still over the hardcoded gradient -> locale-direction aware, not dark-mode aware
+  const hamburgerFill = scrolled
+    ? 'fill-black dark:fill-white'
+    : locale === 'en'
+      ? 'fill-white'
+      : 'fill-black';
 
   return (
     <>
@@ -136,16 +147,13 @@ export default function Hero() {
         <div className="flex items-center gap-3 h-fit mt-6 mr-6 z-40 fixed top-0 right-0">
           <LocaleSwitcher scrolled={scrolled} />
           <button
-          onClick={handleModal}
-          aria-label="Open menu"
-          className="max-sm:flex hidden items-center justify-center h-9 w-9 rounded-full transition-colors"
-        >
-          <GiHamburgerMenu
-            size={22}
-            className={scrolled ? 'fill-black dark:fill-white' : 'fill-white'}
-          />
-        </button>
-      </div>
+            onClick={handleModal}
+            aria-label="Open menu"
+            className="max-sm:flex hidden items-center justify-center h-9 w-9 rounded-full transition-colors"
+          >
+            <GiHamburgerMenu size={22} className={hamburgerFill} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Overlay */}

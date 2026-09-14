@@ -8,6 +8,18 @@ export default function LocaleSwitcher({ scrolled }: { scrolled?: boolean }) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const selectStyles = scrolled
+    ? 'bg-white dark:bg-black text-black dark:text-white border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:shadow-md focus:ring-black/20 dark:focus:ring-white/20 focus:ring-offset-white dark:focus:ring-offset-black'
+    : locale === 'en'
+      ? 'bg-white/10 text-white border-white/25 backdrop-blur-md hover:bg-white/20 hover:border-white/40 focus:ring-white/40 focus:ring-offset-transparent'
+      : 'bg-black/10 text-black border-black/25 backdrop-blur-md hover:bg-black/20 hover:border-black/40 focus:ring-black/40 focus:ring-offset-transparent';
+
+  const chevronStyles = scrolled
+    ? 'text-black/50 dark:text-white/50'
+    : locale === 'en'
+      ? 'text-white/70'
+      : 'text-black/70';
+
   return (
     <div className="relative inline-flex items-center">
       <select
@@ -17,10 +29,7 @@ export default function LocaleSwitcher({ scrolled }: { scrolled?: boolean }) {
           appearance-none cursor-pointer border shadow-sm
           transition-all duration-200 ease-out
           focus:outline-none focus:ring-2 focus:ring-offset-1
-          ${scrolled
-            ? 'bg-white dark:bg-black text-black dark:text-white border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 hover:shadow-md focus:ring-black/20 focus:ring-offset-white'
-            : 'bg-white/10 dark:bg-black/10 text-white dark:text-black border-white/25 dark:border-black/25 backdrop-blur-md hover:bg-white/20 dark:hover:bg-black/20 hover:border-white/40 dark:hover:border-black/40 focus:ring-white/40 focus:ring-offset-transparent'
-          }`}
+          ${selectStyles}`}
       >
         <option className="text-black" value="en">EN</option>
         <option className="text-black" value="fa">فا</option>
@@ -28,9 +37,7 @@ export default function LocaleSwitcher({ scrolled }: { scrolled?: boolean }) {
 
       <FaChevronDown
         size={14}
-        strokeWidth={2.5}
-        className={`pointer-events-none absolute right-2.5 transition-colors duration-200
-          ${scrolled ? 'text-black/50 dark:text-white/50' : 'text-white/70 dark:text-black/70'}`}
+        className={`pointer-events-none absolute right-2.5 transition-colors duration-200 ${chevronStyles}`}
       />
     </div>
   );
