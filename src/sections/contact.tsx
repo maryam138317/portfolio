@@ -4,11 +4,13 @@ import formSchema, { FormData } from "@/schema/form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mnjkwjjw";
 
 export default function Contact() {
   const [submitError, setSubmitError] = useState(false);
+  const t = useTranslations('form');
 
   const {
     register,
@@ -31,7 +33,7 @@ export default function Contact() {
       }
     } catch (err) {
       setSubmitError(true);
-      throw err; // rethrow so react-hook-form knows submission failed
+      throw err;
     }
   };
 
@@ -43,10 +45,10 @@ export default function Contact() {
   }, [isSubmitSuccessful, reset]);
 
   return (
-    <ProSections id="contact" title="Contact">
+    <ProSections id="contact" title={t('title')}>
       <form onSubmit={handleSubmit(submitForm)} className="flex flex-col gap-5 w-full max-w-lg">
         <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="text-sm font-medium">Name</label>
+          <label htmlFor="name" className="text-sm font-medium">{t('name')}</label>
           <input
             id="name"
             className={`border rounded-md px-3 py-2 outline-none focus:border-black transition-colors ${
@@ -58,7 +60,7 @@ export default function Contact() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="text-sm font-medium">Email</label>
+          <label htmlFor="email" className="text-sm font-medium">{t('email')}</label>
           <input
             id="email"
             className={`border rounded-md px-3 py-2 outline-none focus:border-black transition-colors ${
@@ -70,7 +72,7 @@ export default function Contact() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <label htmlFor="message" className="text-sm font-medium">Message</label>
+          <label htmlFor="message" className="text-sm font-medium">{t('message')}</label>
           <textarea
             id="message"
             rows={5}
@@ -87,12 +89,12 @@ export default function Contact() {
           disabled={isSubmitting}
           className="bg-black text-white dark:bg-white dark:text-black rounded-md px-5 py-2.5 font-medium disabled:opacity-50 self-start"
         >
-          {isSubmitting ? "Sending..." : isSubmitSuccessful ? "Sent ✓" : "Contact Me!"}
+          {isSubmitting ? t('sending') : isSubmitSuccessful ? t('sent') : t('sendButton')}
         </button>
 
         {submitError && (
           <p className="text-red-600 text-sm">
-            Something went wrong — please try again or email me directly.
+            {t('submitError')}
           </p>
         )}
       </form>
