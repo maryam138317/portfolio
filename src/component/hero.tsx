@@ -74,13 +74,14 @@ export default function Hero() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const bgStyle = locale == 'en' ? "linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)" : "linear-gradient(219deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)"
+
   return (
     <>
       <div
         className="h-screen w-full flex justify-between"
         style={{
-          background:
-            "linear-gradient(39deg,rgba(255, 255, 255, 1) 0%, rgba(230, 237, 243, 1) 46%, rgba(13, 17, 23, 1) 100%)",
+          background: bgStyle
         }}
       >
         <div className="flex items-center">
@@ -109,7 +110,7 @@ export default function Hero() {
               className="font-mono text-xl md:text-2xl mb-6"
             >
               <span>{"<"}</span>
-              <span>{jobTitle.replace(/\s+/g, "")}</span>
+              <span>{jobTitle}</span>
               <span>{" />"}</span>
             </motion.p>
 
